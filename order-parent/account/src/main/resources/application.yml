@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: account
+  datasource:
+    url: jdbc:mysql:///seata_account?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 1qw23e
+    jdbcUrl: ${spring.datasource.url}
+
+# account8081   storage8082    order8083
+server:
+  port: 8081
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka   #默认就是往这个url注册，也可不写
+  instance:
+    prefer-ip-address: true
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.learn.entity    #设置别名，xml文件的resultMap的type属性不用写那么长路径了
+  configuration:    #驼峰命名
+    map-underscore-to-camel-case: true
+
+#以debug级别日志输出执行sql
+logging:
+  level:
+    com.learn.mapper: debug
+
+rocketmq:
+  name-server: 192.168.64.100:9876

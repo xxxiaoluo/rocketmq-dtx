@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: storage
+  datasource:
+    url: jdbc:mysql:///seata_storage?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 1qw23e
+    jdbcUrl: ${spring.datasource.url}
+
+
+server:
+  port: 8082
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.learn.entity
+  configuration:
+    map-underscore-to-camel-case: true
+logging:
+  level:
+    com.learn.mapper: debug

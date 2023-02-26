@@ -1,0 +1,25 @@
+server:
+  port: 9090
+easy-id-generator:
+  # 雪花算法生成id
+  snowflake:
+    enable: false  #开关
+    zk:
+      connection-string: 127.0.0.1:2181,127.0.0.1:2182,127.0.0.1:2183
+    load-worker-id-from-file-when-zk-down: true  # 当zk不可访问时，从本地文件中读取之前备份的workerId
+  # 通过数据库方式生成id
+  segment:
+    enable: true  #开关
+    db-list: ["seata_order"]
+    fetch-segment-retry-times: 3 # 从数据库获取号段失败重试次数
+
+# Roy新加
+spring:
+  application:
+    name: easy-id
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    instance:
+      prefer-ip-address: true

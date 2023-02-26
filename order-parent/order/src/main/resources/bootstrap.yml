@@ -1,0 +1,7 @@
+#设置网卡
+spring:
+  cloud:
+    inetutils:
+      preferred-networks:
+        - 192\.168\.231\..+
+        - 192\.168\.108\..+
